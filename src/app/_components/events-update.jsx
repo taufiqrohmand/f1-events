@@ -1,23 +1,32 @@
 "use client";
 
 import { useActionState } from "react";
-import { AddEventAction } from "../_actions/action-add";
+import { UpdateEventAction } from "../_actions/action-upate";
 import {
+  Button,
+  Input,
+  Select,
+  SelectItem,
   Modal,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Button,
-  Input,
-  Select,
-  SelectItem,
   useDisclosure,
 } from "@heroui/react";
+import { EditIcon } from "../_icon/icon";
 
-export const AddEventButton = () => {
+export const UpdateEventButton = ({
+  id,
+  title,
+  date,
+  session,
+  country,
+  length,
+  circuit,
+}) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [state, formAction, pending] = useActionState(AddEventAction, null);
+  const [_, formAction, pending] = useActionState(UpdateEventAction, null);
 
   const handleSubmit = async (formData) => {
     await formAction(formData);
@@ -27,21 +36,22 @@ export const AddEventButton = () => {
   return (
     <>
       <Button
+        isIconOnly
         color="primary"
+        size="sm"
+        variant="ghost"
         onPress={onOpen}
-        className="shadow-sm rounded-lg text-white py-1 px-3 bg-blue-500"
       >
-        Add Event
+        <EditIcon />
       </Button>
-
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader>Add new Event</ModalHeader>
+              <ModalHeader>Edit Event</ModalHeader>
               <ModalBody>
                 <form
-                  id="createForm"
+                  id="updateForm"
                   className="space-y-2"
                   action={handleSubmit}
                   onKeyDown={(e) => {
@@ -51,9 +61,11 @@ export const AddEventButton = () => {
                     }
                   }}
                 >
+                  <Input type="hidden" name="id" defaultValue={id} />
                   <Input
                     name="title"
                     placeholder="Input event title..."
+                    defaultValue={title}
                     size="md"
                     color="primary"
                     className="w-full px-3 py-2 border rounded-lg"
@@ -62,6 +74,7 @@ export const AddEventButton = () => {
                   <Input
                     name="date"
                     placeholder="Input event date..."
+                    defaultValue={date}
                     type="date"
                     size="md"
                     color="primary"
@@ -71,6 +84,7 @@ export const AddEventButton = () => {
                   <Select
                     variant="bordered"
                     name="session"
+                    defaultValue={session}
                     size="md"
                     color="primary"
                     className="w-full px-3 py-2 border rounded-lg"
@@ -83,13 +97,15 @@ export const AddEventButton = () => {
                   <Input
                     name="country"
                     placeholder="Input country..."
+                    defaultValue={country}
                     size="md"
                     color="primary"
                     className="w-full px-3 py-2 border rounded-lg"
                   />
                   <Input
                     name="length"
-                    placeholder="Input circuit length... KM"
+                    placeholder="Input circuit lengh... KM"
+                    defaultValue={length}
                     type="number"
                     size="md"
                     color="primary"
@@ -97,27 +113,27 @@ export const AddEventButton = () => {
                   />
                   <Input
                     name="circuit"
-                    placeholder="Input image url circuit..."
+                    placeholder="Input image url circuite..."
+                    defaultValue={circuit}
                     type="url"
                     size="md"
                     color="primary"
                     className="w-full px-3 py-2 border rounded-lg"
-                    required
                   />
                 </form>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Cancel
+                  Close
                 </Button>
                 <Button
                   color="primary"
                   type="submit"
-                  form="createForm"
+                  form="updateForm"
                   disabled={pending}
                   className="shadow-sm rounded-lg text-white py-1 px-3 bg-blue-500"
                 >
-                  {pending ? "Adding..." : "Add"}
+                  {pending ? "Saving..." : "Save"}
                 </Button>
               </ModalFooter>
             </>

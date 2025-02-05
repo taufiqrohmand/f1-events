@@ -1,15 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Orbitron } from "next/font/google";
 import "./globals.css";
 import { HeroUIProvider } from "@heroui/react";
 
-const geistSans = Geist({
+const orbitronFont = Orbitron({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "400"],
 });
 
 export const metadata = {
@@ -20,9 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${orbitronFont.className}`}>
         <HeroUIProvider>{children}</HeroUIProvider>
       </body>
     </html>
