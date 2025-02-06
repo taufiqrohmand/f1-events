@@ -42,7 +42,6 @@ export const AddEventButton = () => {
               <ModalBody>
                 <form
                   id="createForm"
-                  className="space-y-2"
                   action={handleSubmit}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
@@ -51,59 +50,67 @@ export const AddEventButton = () => {
                     }
                   }}
                 >
-                  <Input
-                    name="title"
-                    placeholder="Input event title..."
-                    size="md"
-                    color="primary"
-                    className="w-full px-3 py-2 border rounded-lg"
-                    required
-                  />
-                  <Input
-                    name="date"
-                    placeholder="Input event date..."
-                    type="date"
-                    size="md"
-                    color="primary"
-                    className="w-full px-3 py-2 border rounded-lg"
-                    required
-                  />
-                  <Select
-                    variant="bordered"
-                    name="session"
-                    size="md"
-                    color="primary"
-                    className="w-full px-3 py-2 border rounded-lg"
-                  >
-                    <SelectItem key="test">TEST</SelectItem>
-                    <SelectItem key="practice">PRACTICE</SelectItem>
-                    <SelectItem key="qualifiying">QUALIFIYING</SelectItem>
-                    <SelectItem key="race">RACE</SelectItem>
-                  </Select>
-                  <Input
-                    name="country"
-                    placeholder="Input country..."
-                    size="md"
-                    color="primary"
-                    className="w-full px-3 py-2 border rounded-lg"
-                  />
-                  <Input
-                    name="length"
-                    placeholder="Input circuit length... KM"
-                    type="number"
-                    size="md"
-                    color="primary"
-                    className="w-full px-3 py-2 border rounded-lg"
-                  />
-                  <Input
-                    name="circuit"
-                    placeholder="Input image url circuit..."
-                    type="url"
-                    size="md"
-                    color="primary"
-                    className="w-full px-3 py-2 border rounded-lg"
-                    required
-                  />
+                  <div className="flex flex-col gap-4">
+                    <Input
+                      name="title"
+                      placeholder="Input event title..."
+                      label="Event Title"
+                      labelPlacement="outside"
+                      size="md"
+                      className="w-full border rounded-lg"
+                      required
+                    />
+                    <Input
+                      name="date"
+                      label="Event Date"
+                      placeholder="Input event date..."
+                      labelPlacement="outside"
+                      type="date"
+                      size="md"
+                      className="w-full border rounded-lg"
+                      required
+                    />
+                    <Select
+                      name="session"
+                      placeholder="Select session.."
+                      label="Session"
+                      labelPlacement="outside"
+                      size="md"
+                      className="w-full border rounded-lg"
+                    >
+                      <SelectItem key="test">TEST</SelectItem>
+                      <SelectItem key="practice">PRACTICE</SelectItem>
+                      <SelectItem key="qualifiying">QUALIFIYING</SelectItem>
+                      <SelectItem key="race">RACE</SelectItem>
+                    </Select>
+                    <Input
+                      name="country"
+                      placeholder="Input country..."
+                      label="Country"
+                      labelPlacement="outside"
+                      size="md"
+                      className="w-full border rounded-lg"
+                    />
+                    <Input
+                      name="length"
+                      placeholder="Input circuit length... KM"
+                      label="Cicuit Length"
+                      labelPlacement="outside"
+                      type="number"
+                      size="md"
+                      className="w-full border rounded-lg"
+                    />
+                    <Input
+                      name="circuit"
+                      placeholder="Input image url circuit..."
+                      label="Circuit Image"
+                      labelPlacement="outside"
+                      type="url"
+                      size="md"
+                      className="w-full border rounded-lg"
+                      required
+                    />
+                  </div>
                 </form>
               </ModalBody>
               <ModalFooter>

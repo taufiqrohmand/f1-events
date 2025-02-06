@@ -16,7 +16,7 @@ export const EventList = async () => {
             key={item._id}
             className="flex flex-col h-auto w-96 mt-6 border bg-white rounded-lg shadow-sm  hover:-translate-y-1 hover:shadow-md"
           >
-            <div className="flex justify-between">
+            <div className="flex justify-between pl-3">
               <div className="flec flex-row">
                 <div className="font-bold text-4xl">
                   {item.country[0]
