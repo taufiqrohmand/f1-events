@@ -52,7 +52,7 @@ export const EventList = async () => {
                 className="h-52"
               ></img>
             </div>
-            <div className="flex justify-between h-20  items-center mt-auto bg-black rounded-b-lg">
+            <div className="flex justify-between h-20  items-center mt-auto bg-black rounded-b-lg pl-3 pr-3">
               <div className="font-medium text-lg text-white text-wrap">
                 {item.title.toUpperCase()}
               </div>
